@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <form action="/register" method="POST" class="form">
+            <h2>Register</h2>
+            <label for="first_name">First name:</label>
+            <input name="first_name" type="text">
+            <label for="last_name">Last name:</label>
+            <input name="last_name" type="text">
+            <label for="email">email:</label>
+            <input name="email" type="text">
+            <label for="password">password:</label>
+            <input name="password" type="text">
+            <label for="confirmPass">Confirm password:</label>
+            <input name="confirmPass" type="text">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action='/login' method="POST" class="form">
+            <h2>Login</h2>
+            <label for="email">email:</label>
+            <input name="email" type="text">
+            <label for="password">password:</label>
+            <input name="password" type="text">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
